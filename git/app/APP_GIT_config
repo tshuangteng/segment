@@ -13,6 +13,8 @@
 [remote "origin"]
     url = https://github.com/tshuangteng/Excerpt.git
     fetch = +refs/heads/*:refs/remotes/origin/*
+[credential]
+        useHttpPath = true
 
 # [branch "dev"]
 #	remote = origin
