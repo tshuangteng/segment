@@ -1,0 +1,59 @@
+version: '3'
+
+services:
+
+  # REDIS CONTAINER
+  ht_redis:
+    image: redis:alpine
+    hostname: ht_redis
+    container_name: ht_redis
+    command: redis-server --requirepass huangteng123 --appendonly yes
+    # necessary for setting external links
+    network_mode: bridge
+    ports:
+      - "6399:6379"
+
+  # same as the following command
+  # docker run -itd -p 6399:6379 --hostname ht_redis --name ht_redis redis:alpine redis-server --requirepass huangteng123 --appendonly yes
+
+  # MYSQL5.7 CONTAINER
+  ht_mysql:
+    image: mysql/mysql-server:5.7
+    container_name: ht_mysql
+    hostname: ht_mysql
+    ports:
+      - "3399:3306"
+    network_mode: bridge
+    volumes:
+      - .:/usr/src/mysql_test
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
+    command: "--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci"
+    restart: always
+
+    # same as the following command
+    # docker run --hostname=mysql --name=mysql -p 3366:3306 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=django -e MYSQL_USER=mysql -e MYSQL_PASSWORD=mysql -d mysql/mysql-server:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+  # APP CONTAINER
+  ht_web:
+    build: .
+    container_name: ht_web
+    hostname: ht_web
+    ports:
+      - "2828:80"
+      - "6666:8080"
+    network_mode: bridge
+    links:
+      - ht_redis
+    # link to external container that use the "docker run *" command to start server, not use the "docker-compose up" to start server.
+    # [container name:alisa name]
+    external_links:
+      - mysql:db
+    volumes:
+      - .:/usr/src/ht_web
+    command: "/bin/bash /usr/src/web/start.sh"
+#    command: "sh -c 'tail -f /etc/profile'"
+

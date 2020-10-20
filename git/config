@@ -1,0 +1,18 @@
+# ~/.ssh/config
+
+Host git
+HostName git.com
+User tshuangteng@gmail.com
+IdentityFile ~/.ssh/id_rsa_git
+
+Host github
+HostName github.com
+User tshuangteng@gmail.com
+IdentityFile ~/.ssh/id_rsa_github
+
+Host gitlab
+HostName http://gitlab.com:8090/
+User tshuangteng@gitlab.com
+IdentityFile ~/.ssh/id_rsa_gitlab
+
+

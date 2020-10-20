@@ -1,0 +1,9 @@
+#!/bin/bash
+PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PYTHONPATH=/cainiao
+cron_log_path=/var/log/cron/
+
+15 04 * * * python /cainiao/express/tmp.py >> $cron_log_path/express_tmp.log 2>&1
+25 04 * * * python /cainiao/express/tmp.py >> $cron_log_path/express_tmp.log 2>&1
+20 03 * * * python /cainiao/link/tmp.py >> $cron_log_path/link_tmp.log 2>&1
+
