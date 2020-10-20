@@ -14,7 +14,7 @@
     url = https://github.com/tshuangteng/Excerpt.git
     fetch = +refs/heads/*:refs/remotes/origin/*
 
-# [branch "Excerpt"]
+# [branch "dev"]
 #	remote = origin
 #	merge = refs/heads/Excerpt
 

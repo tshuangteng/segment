@@ -11,7 +11,7 @@ User tshuangteng@gmail.com
 IdentityFile ~/.ssh/id_rsa_github
 
 Host gitlab
-HostName http://gitlab.com:8090/
+HostName http://gitlab.test.com:8090/
 User tshuangteng@gitlab.com
 IdentityFile ~/.ssh/id_rsa_gitlab
 

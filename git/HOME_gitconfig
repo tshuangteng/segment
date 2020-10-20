@@ -1,0 +1,10 @@
+# ~/.gitconfig
+
+[core]
+        autocrlf = false
+[credential]
+        helper = store
+
+
+# multi-user setting for git :
+# please read ---> https://www.zhihu.com/people/tshuangteng/columns

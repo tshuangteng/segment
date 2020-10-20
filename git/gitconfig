@@ -1,9 +1,0 @@
-# ~/.gitconfig
-
-[core]
-        autocrlf = false
-
-
-
-# multi-user setting for git :
-# please read ---> https://zhuanlan.zhihu.com/p/107717653
