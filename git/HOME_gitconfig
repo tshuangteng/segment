@@ -4,9 +4,18 @@
         autocrlf = false
 [credential]
         helper = store
-# git config --global credential.github.com.useHttpPath true
-[credential "github.com"]
         useHttpPath = true
+        httpusepath = true
+
+
+# git config --global credential.useHttpPath true
+# [credential]
+#        useHttpPath = true
+#        httpusepath = true
+# git config --global credential.github.com.useHttpPath true
+# [credential "github.com"]
+#        useHttpPath = true
+
 
 # multi-user setting for git :
 # please read ---> https://www.zhihu.com/people/tshuangteng/columns
