@@ -11,8 +11,9 @@
 	symlinks = false
 	ignorecase = true
 [remote "origin"]
-	url = https://github.com/tshuangteng/Excerpt.git
-	fetch = +refs/heads/*:refs/remotes/origin/*
+    url = https://github.com/tshuangteng/Excerpt.git
+    fetch = +refs/heads/*:refs/remotes/origin/*
+
 # [branch "Excerpt"]
 #	remote = origin
 #	merge = refs/heads/Excerpt
