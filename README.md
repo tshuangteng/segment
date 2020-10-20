@@ -1,5 +1,5 @@
 ## code segment
 
 
-written by tsHuangTeng
+written by tsHuangTeng in [Pycharm](https://www.jetbrains.com/pycharm/).
 
