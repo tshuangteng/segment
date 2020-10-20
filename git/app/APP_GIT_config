@@ -14,9 +14,7 @@
     url = https://github.com/tshuangteng/Excerpt.git
     fetch = +refs/heads/*:refs/remotes/origin/*
 
-# git config --global credential.github.com.useHttpPath true
 # git config --global credential.useHttpPath true
-
 # [credential]
 #        useHttpPath = true
 # [branch "dev"]
