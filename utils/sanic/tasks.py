@@ -21,10 +21,6 @@ redis_pass = 'huangteng123'
 redis_url = 'addr_redis'
 redis_port = 6379
 
-# redis_pass = 'MjExMGNh'
-# redis_url = 'prod.rediscloud-slb-1.yundasys.com'
-# redis_port = 30074
-
 celery = Celery()
 celery.conf.update(
     broker_url=f'redis://:{redis_pass}@{redis_url}:{redis_port}/0',
