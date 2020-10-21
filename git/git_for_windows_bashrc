@@ -1,0 +1,10 @@
+#!/bin/bash
+
+eval `ssh-agent -s`
+ssh-add
+ssh-add ~/.ssh/id_rsa_github
+ssh-add ~/.ssh/id_rsa_gitlab
+ssh-add ~/.ssh/id_rsa_new
+
+#  This config file is useless.
+# please refer to the zhihu link: https://zhuanlan.zhihu.com/p/267270368
