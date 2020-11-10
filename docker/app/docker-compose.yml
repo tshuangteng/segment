@@ -39,7 +39,7 @@ services:
 
   # APP CONTAINER
   ht_web:
-    build: .
+    build: ..
     container_name: ht_web
     hostname: ht_web
     ports:
