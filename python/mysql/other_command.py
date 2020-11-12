@@ -1,6 +1,6 @@
 from datetime import datetime
 from constant import *
-from mysql_manager_v2 import DbManager
+from mysql_main import DbManager
 
 input_date = '20200601'
 select_datetime = str(datetime.strptime(input_date, '%Y%m%d'))

@@ -2,7 +2,7 @@ import MySQLdb
 
 from constant import MYSQL_PASS, MYSQL_USER, MYSQL_DB, MYSQL_PORT, MYSQL_HOST, TEST_TABLE
 
-db = MySQLdb.connect(host=MYSQL_HOST, port=MYSQL_PORT, database=MYSQL_DB, user=MYSQL_USER, password=MYSQL_PASS)
+db = MySQLdb.connect(host=MYSQL_HOST, port=MYSQL_PORT, database=MYSQL_DB, user=MYSQL_USER, password=MYSQL_PASS, charset='utf8mb4')
 
 cursor = db.cursor()
 
@@ -26,7 +26,7 @@ cursor = db.cursor()
 #   INDEX `inx_service` (`service`) USING BTREE COMMENT '卖家服务索引',
 #   INDEX `inx_delivery` (`delivery`) USING BTREE COMMENT '店铺物流索引'
 # ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='店铺表';
-# """.encode('utf8')
+# """
 # cursor.execute(sql)
 
 ############################# columns ##################################
@@ -42,7 +42,7 @@ print(columns)
 cursor.execute(f"desc {TEST_TABLE}")
 columns = [column[0] for column in cursor.fetchall()]
 print(columns)
-cursor.execute('drop table test_table_v2;')
 
+cursor.execute('drop table testv2;')
 cursor.close()
 db.close()
