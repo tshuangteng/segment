@@ -32,10 +32,11 @@ services:
       MYSQL_USER: mysql
       MYSQL_PASSWORD: mysql
     command: "--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci"
+#     --default-authentication-plugin=mysql_native_password
     restart: always
 
-    # same as the following command
-    # docker run --hostname=mysql --name=mysql -p 3366:3306 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=django -e MYSQL_USER=mysql -e MYSQL_PASSWORD=mysql -d mysql/mysql-server:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    # same as the following command: https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/docker-mysql-more-topics.html
+    # docker run --hostname=mysql --name=mysql -p 3306:3306 -e MYSQL_ROOT_HOST=% -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=test -e MYSQL_USER=mysql -e MYSQL_PASSWORD=mysql -d mysql/mysql-server:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
   # APP CONTAINER
   ht_web:

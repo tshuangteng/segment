@@ -1,7 +1,7 @@
 from DBUtils.PooledDB import PooledDB
 import MySQLdb
 from MySQLdb import cursors
-from common.constant import MYSQL_PASS, MYSQL_USER, MYSQL_DB, MYSQL_PORT, MYSQL_HOST, PRODUCT_INFO_TABLE
+from constant import MYSQL_PASS, MYSQL_USER, MYSQL_DB, MYSQL_PORT, MYSQL_HOST, PRODUCT_INFO_TABLE
 
 
 class DbManager(object):
