@@ -26,7 +26,7 @@ cursor = db.cursor()
 #   INDEX `inx_service` (`service`) USING BTREE COMMENT '卖家服务索引',
 #   INDEX `inx_delivery` (`delivery`) USING BTREE COMMENT '店铺物流索引'
 # ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='店铺表';
-# """
+# """.encode('utf8')
 # cursor.execute(sql)
 
 ############################# columns ##################################
@@ -42,6 +42,7 @@ print(columns)
 cursor.execute(f"desc {TEST_TABLE}")
 columns = [column[0] for column in cursor.fetchall()]
 print(columns)
+cursor.execute('drop table test_table_v2;')
 
 cursor.close()
 db.close()
