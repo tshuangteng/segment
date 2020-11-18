@@ -4,3 +4,4 @@ MYSQL_PORT = 3306
 MYSQL_DB = 'test'
 MYSQL_PASS = 'mysql'
 TEST_TABLE = 'test_table'
+
