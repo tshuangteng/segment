@@ -1,9 +1,8 @@
 FROM python:3.7
 
 ARG WORKDIR=/usr/src/ht_web
-COPY .. $WORKDIR
+COPY ./ $WORKDIR
 
-ENV HOME $WORKDIR
 # python env
 ENV PYTHONPATH $WORKDIR
 # necessary for set timezone
@@ -28,20 +27,28 @@ RUN apt-get update \
     && add-apt-repository -y "deb http://openresty.org/package/debian $(lsb_release -sc) openresty" \
     && apt-get update \
     && apt-get -y install --no-install-recommends openresty \
+    # for python
     && pip3 install --upgrade pip setuptools \
     && if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi \
     && if [ ! -e /usr/bin/python ]; then ln -s python3 /usr/bin/python ; fi \
-    && pip3 install --no-cache-dir -r ~/requirements.txt \
+    && pip3 install --no-cache-dir -r $WORKDIR/requirements.txt \
     # set timezone
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
-    && chmod +x ~/start.sh \
+    && chmod +x $WORKDIR/start.sh \
     && rm -rf /var/log/apt/* \
     && rm -rf /var/cache/* \
     && rm -rf /root/.cache \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 
+ENV HOME $WORKDIR
+
 # Notice
 
+# 1
 # "cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime" better than " ENV TZ='Asia/Shanghai' "
 # because crontab server read Time from "/etc/localtime"
+
+# 2
+# don't set "ENV HOME" at file begin
+# because install some service will rely on home path. It leads to the failure of starting for the service
