@@ -1,6 +1,11 @@
 from datetime import datetime, timedelta
 
 now = datetime.now().date()
+now = datetime.today().date()
+
+# str to time format
+time_str = '04:30'
+time_stat = datetime.strptime(time_str, '%H:%M').time()
 
 # str to date format
 date_str = '2020-10-19'
@@ -22,4 +27,3 @@ last_month = (datetime(now.year, now.month, 1) - timedelta(days=1)).date()
 last_last_month = (datetime(last_month.year, last_month.month, 1) - timedelta(days=1)).date()
 month_stat_date = str(last_month)[:-3]
 compare_date = str(last_last_month)[:-3]
-
