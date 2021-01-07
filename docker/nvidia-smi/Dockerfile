@@ -5,7 +5,6 @@ COPY ./ $WORKDIR
 
 ENV PYTHONPATH $WORKDIR
 ENV PYTHONIOENCODING utf-8
-ENV workspace $WORKDIR
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update \
@@ -17,13 +16,15 @@ RUN apt-get update \
     && pip3 install --upgrade pip \
     && apt-get update \
     && apt-get -y install --no-install-recommends openresty \
-    && pip3 install --no-cache-dir -r $workspace/requirements.txt\
-    && chmod +x $workspace/start.sh \
+    && pip3 install --no-cache-dir -r $WORKDIR/requirements.txt\
+    && chmod +x $WORKDIR/start.sh \
     && rm -rf /var/log/apt/* \
     && rm -rf /var/cache/* \
     && rm -rf /root/.cache \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
+
+ENV HOME $WORKDIR
 
 
 # for nvidia docker container
