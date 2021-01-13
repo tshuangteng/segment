@@ -25,6 +25,7 @@ RUN apt-get update \
     && wget -O - https://openresty.org/package/pubkey.gpg | apt-key add - \
     && apt-get -y install --no-install-recommends software-properties-common \
     && add-apt-repository -y "deb http://openresty.org/package/debian $(lsb_release -sc) openresty" \
+    # && echo "deb http://openresty.org/package/ubuntu xenial main" > /etc/apt/sources.list.d/openresty.list \  for ubuntu 16
     && apt-get update \
     && apt-get -y install --no-install-recommends openresty \
     # for python
