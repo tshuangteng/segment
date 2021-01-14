@@ -41,7 +41,7 @@ def split_csv_from_fixed(fixed_csv_file):
 
 if __name__ == '__main__':
     # csv_file_path是有乱码的源文件
-    csv_file_path = r'./21/贵州省 六盘水市 盘县.csv'
+    csv_file_path = r'21/贵州省 六盘水市 盘县.csv'
     new_csv = r'./fixed.csv'
 
     fixed_decode_error(new_csv)
