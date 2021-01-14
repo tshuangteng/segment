@@ -1,5 +1,5 @@
 ## Code Segments
 
 
-written by ***tsHuangTeng*** in **[Pycharm](https://www.jetbrains.com/pycharm/)**.
+written by ***tsHuangTeng*** with **[Pycharm](https://www.jetbrains.com/pycharm/)**.
 
