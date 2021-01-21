@@ -16,7 +16,7 @@ try:
     img_array = np.frombuffer(decode_base64_data, np.uint8)
     img = cv2.imdecode(img_array, cv2.COLOR_BGR2RGB)
 except Exception as e:
-    return ''
+    ''
 
 # 服务端接收
 decode_base64_data = base64.b64decode(body['img'])
