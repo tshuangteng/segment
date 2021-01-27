@@ -6,6 +6,7 @@ COPY ./ $WORKDIR
 # python env
 ENV PYTHONPATH $WORKDIR
 # necessary for set timezone
+ENV LC_ALL C.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update \
