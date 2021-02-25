@@ -1,3 +1,4 @@
+########
 # ubuntu pure system
 FROM ubuntu:20.04
 
@@ -27,6 +28,7 @@ RUN apt-get update \
 ########
 # vim start.sh
 cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+export LC_ALL="C.UTF-8"
 tail -f /etc/profile
 
 # docker run -itd --name gcc8 --hostname gcc8 /bin/bash start.sh
