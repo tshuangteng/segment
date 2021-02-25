@@ -1,6 +1,6 @@
 FROM python:3.7
 
-ARG WORKDIR=/usr/src/ht_web
+ARG WORKDIR=/opt/ht_web
 COPY ./ $WORKDIR
 
 # python env

@@ -15,8 +15,15 @@ import math
 # print(type(...))
 
 # for _ in range(100000):
-#     with open('../a.txt', 'a', encoding='utf8') as f:
+#     with open('a.txt', 'a', encoding='utf8') as f:
 #         f.write(f'{9}')
-
+#
 # s1 = input("请输入a+b:")
 # print(eval(s1))
+
+
+with open('a.txt', 'r', encoding='utf-8') as f:
+    all_line_list = f.readlines()
+    for line_list in all_line_list:
+        ff = eval(line_list)
+        print(type(ff))
