@@ -1,4 +1,4 @@
-########
+################################################################################################
 # ubuntu pure system
 FROM ubuntu:20.04
 
@@ -25,7 +25,7 @@ RUN apt-get update \
 # docker run -itd --name c --hostname c -e LC_ALL="C.UTF-8" -e DEBIAN_FRONTEND="noninteractive" -v /c/users/ht/documents/_mine:/root ubuntu:18.04 /bin/bash
 
 
-########
+################################################################################################
 # vim start.sh
 cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 export LC_ALL="C.UTF-8"
@@ -34,7 +34,7 @@ tail -f /etc/profile
 # docker run -itd --name gcc8 --hostname gcc8 /bin/bash start.sh
 
 
-########
+################################################################################################
 # Windows OS
 # CMD admin
 

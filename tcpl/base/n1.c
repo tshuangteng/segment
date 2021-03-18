@@ -1,5 +1,6 @@
 #include <stdio.h>  // 头文件,预处理指令 编译时查找所需引用的内容.
 #include <stdbool.h>
+
 #define pi 3.141592653535384  // 预处理命令 #define 定义的常量
 #define typename(x) _Generic((x),        /* Get the name of a type */             \
                                                                                   \
@@ -35,19 +36,21 @@ int main() {
     printf("d=b+c, d=%.8f\n", d);
 
     // 一元运算
-    int f, e=10;
-    f=--e;  //单独对变量执行自加和自减(不管前后),变量的值都会加一或者减一
-    printf("f=--e,f=%d, e=%d\n",f,e);  //自加与自减前置的时候，赋值语句获得的是自加或者自减完成后的数值
+    int f, e = 10;
+    f = --e;  //单独对变量执行自加和自减(不管前后),变量的值都会加一或者减一
+    printf("f=--e,f=%d, e=%d\n", f, e);  //自加与自减前置的时候，赋值语句获得的是自加或者自减完成后的数值
     e = 10;
-    f=e--;
-    printf("f=e--,f=%d, e=%d\n",f,e);  //自加与自减后置的时候，赋值语句获得的是自加或者自减之前的原始数值
+    f = e--;
+    printf("f=e--,f=%d, e=%d\n", f, e);  //自加与自减后置的时候，赋值语句获得的是自加或者自减之前的原始数值
 
     // 位运算
-    int x,y,z;
-    x=10; 1010;
-    y=15; 1111;
-    printf("x&y = %d\n",x&y);
-    printf("x|y = %d\n", x|y);
+    int x, y, z;
+    x = 10;
+    1010;
+    y = 15;
+    1111;
+    printf("x&y = %d\n", x & y);
+    printf("x|y = %d\n", x | y);
 
     /*
      * 计算机位运算都是基于补码进行的.
@@ -59,22 +62,22 @@ int main() {
      * 10000000 0000000 0000000 00010000  原码 -16
      */
     printf("~y = %d\n", ~y);
-    printf("x << 2 = %d\n", x<<2);
-    printf("y>>2 = %d\n", y>>2);
+    printf("x << 2 = %d\n", x << 2);
+    printf("y>>2 = %d\n", y >> 2);
 
     // 三目运算; bool的运用
-    printf("%s\n", (x>y) ? "x > y" : "x < y");
+    printf("%s\n", (x > y) ? "x > y" : "x < y");
 
     bool m, n;
     m = false;
     n = true;
-    printf("%s\n", (m&n)?"True":"False");
-    printf("%s\n", (m|n)?"True":"False");
+    printf("%s\n", (m & n) ? "True" : "False");
+    printf("%s\n", (m | n) ? "True" : "False");
 
     // while语句, 先判断再执行
     // 举例: 采用轮询的方式采集端口的信息,不断扫描每个端口的状态. while(1)
     int ht = 3;
-    while (ht > 0){
+    while (ht > 0) {
         printf("%d\n", ht);
         ht--;
     }
@@ -84,10 +87,10 @@ int main() {
     do {
         printf("Number: %d\n", tt);
         --tt;
-    } while (tt>0);
+    } while (tt > 0);
 
     // for, 已知: 循环的控制条件
-    for (int i = 1;i<10;i++) {  //循环变量赋初值; 循环条件; 循环变量增值
+    for (int i = 1; i < 10; i++) {  //循环变量赋初值; 循环条件; 循环变量增值
         printf("%d\n", i);
     }
 
