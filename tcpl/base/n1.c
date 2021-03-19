@@ -22,7 +22,7 @@ long long int: "long long int", unsigned long long int: "unsigned long long int"
  */
 
 int main() {
-    const float pii = 3.141592;  // c语言中的常量即是字面值,只是用特定的名称代表了这个字面值. 不需要经过声明和初始化
+    const float pii = 3.141592;  // c语言中的常量即是字面值,只是用特定的名称代表了这个字面值,不需要经过声明和初始化
 
 
     // 类型转换
@@ -106,14 +106,14 @@ int main() {
      */
 
 
-    // c语言中&符号使用并理解
-    int ccc;
-    puts("请你猜数字，请输入0-9的数字");
-    scanf("%i", &ccc);  //
+    // c语言中&符号 和 * 符号 使用并理解
+    // int int_put;
+    // puts("请输入数字");
+    // scanf("%i", &int_put);  //  没有取位符&的话int_put的值仅在scanf 函数中发生变化, 函数之外的int_put值没有变化.
+
     /*
-     * ccc 的值仅在scanf函数中发生变化变化, 函数之外的a值没有变化.
-     * ”&“ 是以一个操作符，可以获取变量ccc 所在的存储空间位置
-     * 通过变量ccc的地址 赋值到其存储空间.
+     * ”&“ 是一个操作符，获取变量 int_put 所在的存储空间位置
+     * 通过变量int_put的地址,赋值键盘输入的内容到其存储空间中,同时也保证了scanf函数之外int_put变量值的可用.
      */
 
     int h = 10;
@@ -124,10 +124,16 @@ int main() {
     printf("%d\n", *t);  //10; 将t的内容作为地址,通过这个地址再去取对应的值.
 
 
-
-
-
-
+    // switch/case: 顺序执行,控制跳出语句break
+    int s=5;
+    switch (s) {
+        case 1:
+            printf("星期一\n");
+            break;
+        case 5:
+            printf("星期五\n");
+            break;
+    };
 
     return 0;
 }
