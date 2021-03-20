@@ -46,4 +46,4 @@ tail -f /etc/profile
 
 #################################################### use gcc:8 dockerhub ################################################
 
-# docker run -itd --name gcc8 --hostname gcc8 -e LC_ALL="C.UTF-8" -e "TZ=Asia/Shanghai" gcc:8 bash
+# docker run -itd --name gcc8 --hostname gcc8 -e LC_ALL="C.UTF-8" -e "TZ=Asia/Shanghai" -v /c/project/segment:/root/segment gcc:8 bash
