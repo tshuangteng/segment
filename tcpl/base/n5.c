@@ -90,6 +90,8 @@ int mains() {
 // 实现一个函数，函数功能是将一串给定的字符串中的大写字符全部转换为小写字符。
 int main() {
     char a[100] = "Welcome to our KITH shop! It is a interest place.", temp;
+    char *str="this is demo";  // c 指针使用
+
     printf("before convert: %s\n", a);
 
     for (int i = 0; i < strlen(a); i++) {
