@@ -27,7 +27,7 @@ services:
     volumes:
       - .:/usr/src/mysql_test
     environment:
-      MYSQL_ROOT_HOST: %
+      MYSQL_ROOT_HOST: '%'
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: test
       MYSQL_USER: mysql
