@@ -16,8 +16,7 @@ long long int: "long long int", unsigned long long int: "unsigned long long int"
       default: "other")
 
 /*
- * 对于C语言最好的项目就是开发系统
- * 音频和视频的解码器和编码器等；
+ * 对于C语言最好的项目就是开发系统,音频和视频的解码器和编码器等；
  * 协议栈的开发。
  */
 
