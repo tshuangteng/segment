@@ -1,7 +1,7 @@
 #include <stdio.h>  // 头文件,预处理指令 编译时查找所需引用的内容.
 #include <stdbool.h>
 
-#define pi 3.141592653535384  // 预处理命令 #define 定义的常量
+#define pi 3.141592653535384  // 预处理命令 #define 定义的常量constant
 #define typename(x) _Generic((x),        /* Get the name of a type */             \
                                                                                   \
         _Bool: "_Bool",                  unsigned char: "unsigned char",          \
@@ -21,12 +21,12 @@ long long int: "long long int", unsigned long long int: "unsigned long long int"
  */
 
 int main() {
-    const float pii = 3.141592;  // c语言中的常量即是字面值,只是用特定的名称代表了这个字面值,不需要经过声明和初始化
-
+    const float pii = 3.141592;  // c语言中的常量即是字面值,只是用特定的名称代表了这个字面值literal,不需要经过声明和初始化
 
     // 类型转换
-    int a = 1, b = 2;
+    int a = 1, b = 2;  // c语言中的变量要需要经过声明和初始化
     float c = 3.14159, d = 0;
+    // % [标志位] [显示占位宽度] [精度] [数字长度] 说明符
     printf("a type: %s, b type: %s, c type: %s, d type: %s\n", typename(a), typename(b), typename(c), typename(d));
     a = (float) b + (float) c;  // 显式类型转换
     printf("a=b+c, a=%d\n", a);
