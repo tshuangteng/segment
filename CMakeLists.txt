@@ -3,4 +3,4 @@ project(segment)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(segment thec/base/n9.c)
+add_executable(segment the_c/base/c1.c)
