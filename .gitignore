@@ -7,7 +7,7 @@
 # C extensions
 *.so
 cmake-build-debug
-CMakeLists.txt
+# CMakeLists.txt
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

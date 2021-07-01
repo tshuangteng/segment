@@ -61,5 +61,7 @@ int main() {
     //    ne      two     o       ne      s
     //    ne      wo      t       t       one
 
+
+    // char型指针数组的理解
     return 0;
 }
