@@ -14,12 +14,20 @@ int main(int argc, char *argv[]) {
     DWORD ldw = dw;
     char *lstr = str;
 
-    unsigned int c = 257;  // 4字节 补码:00000000 00000000 00000001 00000001
+    unsigned int c = 257; // 4字节 补码:00000000 00000000 00000001 00000001  (高位  <---  低位)
     unsigned int *a = &c;
     unsigned char *b = (unsigned char *) &c;  // 强制转换类型
 
     printf("%d\n", *a); // 输出 257
     printf("%d\n\n", *b); // 输出 1  字节小端存储: 低地址存低位数据 , char存储1字节的数据的补码 00000001
+
+    // 内存中的小端存储模式
+    //   低地址  --->  高地址
+    //   低位  --->  高位
+
+    // 00000001 00000001 00000000 00000000  (int类型 四字节, 转化为10进制为257)
+    // 00000001  (char类型 1字节, 转化为10进制为1)
+
 
     /*
      * adjust byte big or little endian
