@@ -1,5 +1,7 @@
 #include<stdio.h>
 
+// 内存中数据占用的字节数计算
+
 int main() {
     /* ---------- */
     struct A {
@@ -37,7 +39,7 @@ int main() {
         char name[20];  // 20字节是int类型4字节的倍数
         int age;  // 故中间2组类型对齐为8字节,再相加字符数组类型.
         char sex;
-        char num[20];
+        char num[20]; // 20字节
     };
 
     typedef struct subject {
@@ -48,8 +50,8 @@ int main() {
     struct array {
 //        float f;
         double f;  // 8字节
-        char p;
-        int arr[3];  // 3组4字节, 后2组对齐double类型相加为8字节, 剩余的第一组4字节再加char类型对齐到8字节
+        char p;  // 和后一组类型, 补齐为int的倍数,即为4字节
+        int arr[3];  // 3 * 4 = 12字节, 而double是int的倍数. 故 后2组类型补齐到4字节的倍数即可.
     };
 
     int struct_array = sizeof(struct STU);
@@ -62,21 +64,21 @@ int main() {
 
 
     /* ---------- */
-    void *pointer;  // 64位系统的指针变量所占字节数为8
+    void *pointer;  // 64位系统的指针变量所占字节数为8字节
 
     struct Test {
-        int Num;  // 第一组
-        char *pcName;  // 第二组: 以最大的8字节为单位
-        short sDate;  // 第三组
-        char cha[2];  // 第三组
-        short sBa[4];  // 第四组
+        int Num;  // 第一组 4字节 对齐第二组实际占用8字节
+        char *pcName;  // 第二组: 指针变量所占 8字节
+        short sDate;  // 第三组 2字节 和第三组共同对齐其他组实际占用4字节
+        char cha[2];  // 第三组 2字节 实际占用4字节
+        short sBa[4];  // 第四组 8字节
     } *p;
 
     int pointer_size = sizeof(pointer);
     int test_size = sizeof(struct Test);
 
     printf("size of pointer: %d\n", pointer_size);  // 8
-    printf("size of Test: %d\n", test_size);  // 4组8字节, 故为32
+    printf("size of Test: %d\n", test_size);  // 内存中连续对齐的4组8字节, 故为32
 
     return 0;
 }
