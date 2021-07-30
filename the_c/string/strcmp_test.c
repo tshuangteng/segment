@@ -31,13 +31,14 @@ int main() {
 
     char p1[] = "hello world";
     char p2[] = "hello world";
-//    int p1[] = {123};
-//    int p2[] = {789};
-    printf("%d",*p1);
-    printf("%x",*p1);
-    printf("%d",*p2);
+    //    int p1[] = {123};
+    //    int p2[] = {789};
+    printf("%s\n\n",p1);
 
-//    cmp(p1, p2);
+    printf("%d\n",*p1);
+    printf("%x\n",*p1);
+    printf("%d\n",*p2);
+    printf("%x\n",*p2);
 
     return 0;
 }
