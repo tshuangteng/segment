@@ -1,7 +1,7 @@
 #include <stdio.h>
 // https://stackoverflow.com/questions/20106732/c-difference-between-unsigned-char-s1-and-unsigned-chars1
 
-int cmp(p1, p2)
+int demo_cmp(p1, p2)
         const char *p1;
         const char *p2;
 {
@@ -33,7 +33,11 @@ int main() {
     char p2[] = "hello world";
 //    int p1[] = {123};
 //    int p2[] = {789};
-    cmp(p1, p2);
+    printf("%d",*p1);
+    printf("%x",*p1);
+    printf("%d",*p2);
+
+//    cmp(p1, p2);
 
     return 0;
 }
