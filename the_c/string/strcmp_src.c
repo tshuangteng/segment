@@ -30,7 +30,7 @@ STRCMP (const char *p1, const char *p2)  // (const char) *p1 表示: 读取p1指
     unsigned char c1, c2;
     do
     {
-        c1 = (unsigned char) *s1++;  // 指针后移一位sizeof(char),也就是1字节到后一个字符处.
+        c1 = (unsigned char) *s1++;  // 指针后移sizeof(char)字节数,也就是后移1字节到后一个字符处.
         c2 = (unsigned char) *s2++;
         if (c1 == '\0')  // 结束循环: 字符指针移动到s1字符串的结尾处'\0', 如果此时的c2还有字符时,相减为负; 如果此时的c2恰好也是'\0',相减为0.
             return c1 - c2;
