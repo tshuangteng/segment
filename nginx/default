@@ -75,3 +75,7 @@ http {
     }
   }
 }
+
+
+# install for linux
+# https://openresty.org/en/linux-packages.html
