@@ -2,23 +2,26 @@
 
 [core]
         autocrlf = false
+
+# git config --global credential.useHttpPath true
 [credential]
         helper = store
         useHttpPath = true
         httpusepath = true
+
+# git config --global credential.github.com.useHttpPath true
+[credential "github.com"]
+        useHttpPath = true
+
 [http]
         proxy = socks5://127.0.0.1:1080
 [https]
         proxy = socks5://127.0.0.1:1080
 
-# git config --global credential.useHttpPath true
-# [credential]
-#        useHttpPath = true
-#        httpusepath = true
-# git config --global credential.github.com.useHttpPath true
-# [credential "github.com"]
-#        useHttpPath = true
 
 
 # multi-user setting for git :
 # please read ---> https://zhuanlan.zhihu.com/p/267270368
+
+# cache token to credential
+# install GitHub CLI ---> https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git
