@@ -1,7 +1,7 @@
 import logging
 import sys
 from pathlib import Path
-from python.common.constant import PROJECT_PATH
+from python.Pypi.file.constant import PROJECT_PATH
 from datetime import datetime
 
 
