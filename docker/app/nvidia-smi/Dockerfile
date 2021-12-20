@@ -1,6 +1,6 @@
 FROM nvidia/cuda:10.2-devel-ubuntu18.04
 
-ARG WORKDIR=/usr/src/ocr
+ARG WORKDIR=/opt/ocr
 COPY ./ $WORKDIR
 
 ENV PYTHONPATH $WORKDIR
@@ -26,8 +26,3 @@ RUN apt-get update \
     && apt-get clean
 
 ENV HOME $WORKDIR
-
-
-# for nvidia docker container
-# with python3.6 on ubuntu18.04 system
-# python's code setting use ENV

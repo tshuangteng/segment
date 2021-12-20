@@ -13,9 +13,6 @@ services:
     ports:
       - "6399:6379"
 
-  # same as the following command
-  # docker run -itd -p 6399:6379 --hostname ht_redis --name ht_redis redis:alpine redis-server --requirepass huangteng123 --appendonly yes
-
   # MYSQL5.7 CONTAINER
   ht_mysql:
     image: mysql/mysql-server:5.7
@@ -35,16 +32,6 @@ services:
     command: "--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci"
 #     --default-authentication-plugin=mysql_native_password
     restart: always
-
-    ~# sudo docker run -itd --hostname=route_mysql --name=route_mysql -p 3333:3306 -v /home/huangteng/mysql_db:/mysql_db -e MYSQL_ROOT_HOST=% -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=test -e MYSQL_USER=mysql -e MYSQL_PASSWORD=mysql -d mysql/mysql-server:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-
-    # same as the following command: https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/docker-mysql-more-topics.html
-    # 1
-    ~# docker run --hostname=mysql --name=mysql -p 3306:3306 -e MYSQL_ROOT_HOST=% -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=test -e MYSQL_USER=mysql -e MYSQL_PASSWORD=mysql -d mysql/mysql-server:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-    ~# echo "default-time-zone = '+08:00'" >> /etc/my.cnf
-
-    # 2
-    ~# docker run --hostname=mysql --name=mysql -p 3399:3306 -e TZ=Asia/Shanghai -e MYSQL_ROOT_HOST=% -e MYSQL_ROOT_PASSWORD=Yjy98092616 -e MYSQL_DATABASE=address -e MYSQL_USER=mysql -e MYSQL_PASSWORD=yjy98092616 -d mysql/mysql-server:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
 
   # APP CONTAINER
