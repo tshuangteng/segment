@@ -1,7 +1,7 @@
 FROM python:3.7
 
 ARG WORKDIR=/opt/ht_web
-COPY ./ $WORKDIR
+COPY ../app $WORKDIR
 
 # python env
 ENV PYTHONPATH $WORKDIR
