@@ -15,10 +15,6 @@ with concurrent.futures.ThreadPoolExecutor() as executor:
             # break
             continue
 
-# 和偏函数的使用
-
-get_func = partial(get_request, url=URL)
-
 with concurrent.futures.ThreadPoolExecutor() as executor:
     for waybill_no, res_json in zip(waybill_no_list, executor.map(get_func, waybill_no_list, chunksize=400)):
         if not res_json:
