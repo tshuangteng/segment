@@ -28,14 +28,14 @@ async def get_cookies_token(username, password, name, stat_date):
     await page.evaluate('''() =>{ Object.defineProperty(navigator, 'languages', { get: () => ['en-US', 'en'] }); }''')
     await page.evaluate('''() =>{ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3, 4, 5,6], }); }''')
 
-    # login fly.cainiao.com
+    # taobao_login fly.cainiao.com
     await asyncio.sleep(1)
     frames = page.frames
-    user = await frames[3].querySelector('#fm-login-id')
+    user = await frames[3].querySelector('#fm-taobao_login-id')
     await user.type(username, {'delay': 80})
-    passwd = await frames[3].querySelector('#fm-login-password')
+    passwd = await frames[3].querySelector('#fm-taobao_login-password')
     await passwd.type(password, {'delay': 80})
-    log_in = await frames[3].querySelector('#login-form > div.fm-btn > button')
+    log_in = await frames[3].querySelector('#taobao_login-form > div.fm-btn > button')
     await log_in.click()
     await asyncio.sleep(4)
     await page.reload()
@@ -120,11 +120,11 @@ async def get_cookies_and_referer_for_link(username, password):
 
     await asyncio.sleep(1)
     frames = page.frames
-    user = await frames[3].querySelector('#fm-login-id')
+    user = await frames[3].querySelector('#fm-taobao_login-id')
     await user.type(username, {'delay': 80})
-    passwd = await frames[3].querySelector('#fm-login-password')
+    passwd = await frames[3].querySelector('#fm-taobao_login-password')
     await passwd.type(password, {'delay': 80})
-    log_in = await frames[3].querySelector('#login-form > div.fm-btn > button')
+    log_in = await frames[3].querySelector('#taobao_login-form > div.fm-btn > button')
     await log_in.click()
     await asyncio.sleep(3)
     await page.reload()

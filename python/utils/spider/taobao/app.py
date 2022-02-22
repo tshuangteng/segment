@@ -104,8 +104,8 @@ async def main(username, password, search_number=None, ip=None):
     await asyncio.sleep(1)
 
     # ÌÔ±¦ÍøÕ¾µÄµÇÂ¼
-    await page.type('#fm-login-id', username, {'delay': 30})
-    await page.type('#fm-login-password', password, {'delay': 50})
+    await page.type('#fm-taobao_login-id', username, {'delay': 30})
+    await page.type('#fm-taobao_login-password', password, {'delay': 50})
 
     # # µÇÂ¼Ò³Ãæ»¬¿é¼ì²â
     # await login_slide(browser, page)
@@ -113,7 +113,7 @@ async def main(username, password, search_number=None, ip=None):
     #     await page_close(browser)
     #     return False
     # logger.info(f'\n====ÌÔ±¦ÕËºÅ£º{username}£¬µÇÂ¼³É¹¦ºóµÄÒ³ÃæÊµÀý====\n{page}\n========')
-    await page.click('#login-form > div.fm-btn > button')
+    await page.click('#taobao_login-form > div.fm-btn > button')
     await asyncio.sleep(3)
     res = await page.content()
 

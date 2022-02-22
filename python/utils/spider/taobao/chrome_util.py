@@ -139,8 +139,8 @@ async def login_slide(browser, page):
         logger.info(f'登录页面滑动滑块之后的标志---> {flag}')
 
     # await page.evaluate('''document.getElementById("J_SubmitStatic").click()''')
-    # await page.evaluate('''document.getElementById("#login-form > div.fm-btn > button").click()''')
-    await page.click('#login-form > div.fm-btn > button')
+    # await page.evaluate('''document.getElementById("#taobao_login-form > div.fm-btn > button").click()''')
+    await page.click('#taobao_login-form > div.fm-btn > button')
     await asyncio.sleep(5)
     logger.info('=================================')
     return page
