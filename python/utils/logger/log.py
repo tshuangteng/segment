@@ -1,38 +1,39 @@
 import logging
+import os
 import sys
 from pathlib import Path
-from python.Pypi.file.constant import PROJECT_PATH
 from datetime import datetime
 
+_current_file_path = os.path.abspath(__file__)
+_project_path = Path(_current_file_path).parent.parent.parent
 
-def generate_logfile(app_name):
+
+def generate_logfile(log_file_name):
     """Get current platform name by short string."""
-    project_name = str(PROJECT_PATH.parts[-1])
-    # stat_date = datetime.today().date() - timedelta(days=1)
-    stat_date = datetime.today().date()
+    stat_date = str(datetime.today().date()).replace('-', '')
 
     if sys.platform.startswith('linux') or sys.platform.startswith('darwin'):
-        log_path = Path('/{}/log/{}'.format(project_name, stat_date))
+        log_path = Path(_project_path, f'log/{stat_date}')
         if not Path.exists(log_path):
             Path.mkdir(log_path, parents=True, exist_ok=True)
-        log_file = Path('{}/{}.log'.format(log_path, app_name))
+        log_file = Path(f'{log_path}/{log_file_name}.log')
         return log_file
 
     elif (sys.platform.startswith('win') or
           sys.platform.startswith('msys') or
           sys.platform.startswith('cyg')):
-        log_path = Path('{}/log/{}'.format(PROJECT_PATH, stat_date))
+        log_path = Path(f'{_project_path}/log/{stat_date}')
         if not Path.exists(log_path):
             Path.mkdir(log_path, parents=True, exist_ok=True)
-        log_file = Path('{}/{}.log'.format(log_path, app_name))
+        log_file = Path(f'{log_path}/{log_file_name}.log')
         return log_file
     else:
         raise OSError('Unsupported platform: ' + sys.platform + ', and unable create log file.')
 
 
-def my_logger(app_name, file_name=__name__):
+def mylogger(log_file_name, file_name=__name__):
     """setting logger"""
-    log_file = generate_logfile(app_name)
+    log_file = generate_logfile(log_file_name)
     log = logging.getLogger(file_name)
     log.setLevel(logging.INFO)
     formatter = logging.Formatter('%(asctime)s - %(module)s - %(levelname)s -%(funcName)s - %(lineno)d - %(message)s')
