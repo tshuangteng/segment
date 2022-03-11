@@ -5,7 +5,7 @@ from pathlib import Path
 from datetime import datetime
 
 _current_file_path = os.path.abspath(__file__)
-_project_path = Path(_current_file_path).parent.parent.parent
+project_path = Path(_current_file_path).parent.parent.parent
 
 
 def generate_logfile(log_file_name):
@@ -13,7 +13,7 @@ def generate_logfile(log_file_name):
     stat_date = str(datetime.today().date()).replace('-', '')
 
     if sys.platform.startswith('linux') or sys.platform.startswith('darwin'):
-        log_path = Path(_project_path, f'log/{stat_date}')
+        log_path = Path(project_path, f'log/{stat_date}')
         if not Path.exists(log_path):
             Path.mkdir(log_path, parents=True, exist_ok=True)
         log_file = Path(f'{log_path}/{log_file_name}.log')
@@ -22,7 +22,7 @@ def generate_logfile(log_file_name):
     elif (sys.platform.startswith('win') or
           sys.platform.startswith('msys') or
           sys.platform.startswith('cyg')):
-        log_path = Path(f'{_project_path}/log/{stat_date}')
+        log_path = Path(f'{project_path}/log/{stat_date}')
         if not Path.exists(log_path):
             Path.mkdir(log_path, parents=True, exist_ok=True)
         log_file = Path(f'{log_path}/{log_file_name}.log')
