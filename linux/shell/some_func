@@ -1,9 +1,37 @@
+#!/bin/bash
+# v20220316 by huangteng
+
+today=$(date "+%Y-%m-%d")
+yesterday=$(date "+%Y-%m-%d" -d "1 day ago")
+yest=$(date "+%Y%m%d" -d "1 day ago")
+
+
+### 日志设置
+log_path=/suanfa/log/$yest
+log_file=$log_path/tb_scan.log
+
+[ ! -d $log_path ] && mkdir -p $log_path
+
+exec > $log_file 2>&1
+
+psql -d suanfa -h localhost -U gpadmin -p 5432 -c "alter table tb_scan drop partition if exists p$yest";
+
+read -d "" partition_sql << EOF
+alter table tb_scan add partition p$yest start (timestamp without time zone '$yesterday 00:00:00') inclusive end (timestamp without time zone '$today 00:00:00') exclusive WITH (appendonly='true', compresslevel='5', orientation='column', compresstype=zlib);
+EOF
+
+psql -d suanfa -h localhost -U gpadmin -p 5432 -c "$partition_sql";
+
+echo `date`
+echo '--- 开始入库csv文件 ---'
+### tb_scan, tu_doc_info, th_gpsdata数据入库
+# 相关csv文件数据的入库, 文件nas目录: xx.xx.xx.xx:/xxx/dta, 挂载到本地的目录: /etl/dta
 import_data(){
     table=$1
-    shipStopInfo_file_path=/addr7/full_piece/real/$yes
-    csv_file_name=addr7_*00.csv
+    etl_data_path=/etl/dta/$yest
+    csv_file_name=$table*00.csv
 
-    for each in `find $shipStopInfo_file_path -maxdepth 1 -name $csv_file_name`;do
+    for each in `find $etl_data_path -maxdepth 1 -name $csv_file_name`;do
         psql -d suanfa -h localhost -U gpadmin -p 5432 -c "\copy $table from $each with csv header";
         if [ $? -ne 0 ];then
             echo "error: import $each"
@@ -12,4 +40,8 @@ import_data(){
     done
 }
 
-import_data 'addr_real'
+import_data 'tb_scan'
+echo '--- tb_scan 入库完成 ---'
+echo `date`
+
+
