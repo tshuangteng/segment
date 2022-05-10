@@ -1,0 +1,15 @@
+import_data(){
+    table=$1
+    shipStopInfo_file_path=/addr7/full_piece/real/$yes
+    csv_file_name=addr7_*00.csv
+
+    for each in `find $shipStopInfo_file_path -maxdepth 1 -name $csv_file_name`;do
+        psql -d suanfa -h localhost -U gpadmin -p 5432 -c "\copy $table from $each with csv header";
+        if [ $? -ne 0 ];then
+            echo "error: import $each"
+        fi
+        echo "success: import $each"
+    done
+}
+
+import_data 'addr_real'
