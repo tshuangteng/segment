@@ -11,3 +11,6 @@ log_file=$log_path/prd_cron.log
 
 [ ! -d $log_path ] && mkdir -p $log_path
 exec > $log_file 2>&1
+##### or #####
+# [ ! -d $log_path ] && mkdir -p $log_path
+# exec &> >(tee -a $log_file)
