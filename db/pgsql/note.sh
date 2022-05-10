@@ -28,4 +28,7 @@ alter table i1_import_raw add column receiverTownName set default 'value';
 
 # 日期转换
 to_timestamp(substring(batch from 3),'yyyyMMddhh24miss')
-psql -d  develop   -h  localhost   -U gpadmin  -p 5432  -c "insert into i1_order select to_timestamp(substring(batch from 3),'yyyyMMddhh24miss') as batch_time,* from i1_import_raw;"
+psql -d develop -h localhost -U gpadmin -p 5432 -c "insert into i1_order select to_timestamp(substring(batch from 3),'yyyyMMddhh24miss') as batch_time,* from i1_import_raw;"
+
+
+# connect pgsql with command line
