@@ -1,36 +1,58 @@
+# # coding:utf8
 # import time
-# import configparser
-# import os
+# import signal
 #
 #
-# while 1:
-#     a_while_start = time.time()
-#     # 读取配置文件
-#     try:
-#         # CONFIG_PATH = os.environ['CONFIG_PATH']
-#         CONFIG_PATH = './conf/config.ini'
-#         config = configparser.ConfigParser()
-#         config.read(CONFIG_PATH, encoding='utf-8')
-#         wgc_code = config['wgc_info']['wgc_code']
-#         wgc_name = config['wgc_info']['wgc_name']
-#         origin_image = int(config['save_image']['origin_image'])
-#         print('origin-image', origin_image)
-#         no_read = int(config['save_image']['no_read'])
-#         print('no-read', no_read)
-#         fj_api = config['fj_api']['fj_api']
-#     except Exception as e:
-#         print(f'read config error: {e}')
-#         no_read = 0
-#         origin_image = 0
-#         wgc_code = 0
-#         wgc_name = 0
-#         fj_api = ''
+# # 自定义超时异常
+# class TimeoutError(Exception):
+#     def __init__(self, msg):
+#         super(TimeoutError, self).__init__()
+#         self.msg = msg
 #
-#     if not no_read:
-#         print(no_read)
 #
-#     time.sleep(5)
+# def time_out(interval, callback):
+#     def decorator(func):
+#         def handler(signum, frame):
+#             raise TimeoutError("run func timeout")
 #
+#         def wrapper(*args, **kwargs):
+#             try:
+#                 signal.signal(signal.SIGALRM, handler)
+#                 signal.alarm(interval)  # interval秒后向进程发送SIGALRM信号
+#                 # signal.setitimer(1, 0.1)  # interval秒后向进程发送SIGALRM信号
+#                 result = func(*args, **kwargs)
+#                 signal.alarm(0)  # 函数在规定时间执行完后关闭alarm闹钟
+#                 return result
+#             except TimeoutError as e:
+#                 callback(e)
+#
+#         return wrapper
+#
+#     return decorator
+#
+#
+# def timeout_callback(e):
+#     print(e.msg)
+#
+#
+# @time_out(2, timeout_callback)
+# def task1():
+#     print("task1 start")
+#     time.sleep(3)
+#     print("task1 end")
+#
+#
+# @time_out(2, timeout_callback)
+# def task2():
+#     print("task2 start")
+#     time.sleep(1)
+#     print("task2 end")
+#
+#
+# if __name__ == "__main__":
+#     task1()
+#     task2()
+
 
 # pip install func_timeout -i https://pypi.doubanio.com/simple
 from func_timeout import func_set_timeout, FunctionTimedOut
