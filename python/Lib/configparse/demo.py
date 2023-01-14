@@ -7,7 +7,7 @@ try:
     CONFIG_PATH = ('./config.ini')
     config = configparser.ConfigParser()
     config.read(CONFIG_PATH, encoding='utf-8')
-    wgc_code = config['wgc_info']['wgc_code']
+    wgc_code = int(config['wgc_info']['wgc_code'])
     wgc_name = config['wgc_info']['wgc_name']
     origin_image = int(config['save_image']['origin_image'])
     no_read = int(config['save_image']['no_read'])
