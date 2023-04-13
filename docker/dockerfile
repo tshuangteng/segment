@@ -1,0 +1,35 @@
+FROM 10.131.9.15:5000/nvidia/cuda:10.2-devel-ubuntu18.04-python3.8-torch
+# FROM 10.131.9.15:5000/nvidia/cuda:10.2-devel-ubuntu18.04-python3.8
+# FROM 10.131.9.15:5000/nvidia/cuda:10.2-devel-ubuntu18.04
+# FROM nvidia/cuda:10.2-devel-ubuntu18.04
+
+ARG workdir=/opt/ocr-jietu
+RUN rm -rf $workdir
+COPY ./ $workdir
+
+ENV PYTHONPATH $workdir
+ENV LC_ALL C.UTF-8
+ENV PYTHONIOENCODING utf-8
+ENV DEBIAN_FRONTEND noninteractive
+ENV prd 1
+
+# RUN cp $workdir/sources.list /etc/apt/sources.list \
+#     && apt-get update \
+#     && apt-get install tzdata python3.8 python3-distutils -y \
+#     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+#     && cd $workdir && python3.8 get-pip.py \
+
+RUN pip3 install --no-cache-dir -r $workdir/requirements.txt -i https://pypi.doubanio.com/simple \
+    && rm -rf /var/log/apt/* \
+    && rm -rf /var/cache/* \
+    && rm -rf /root/.cache \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
+
+EXPOSE 80
+
+WORKDIR $workdir/api
+
+ENV HOME $workdir
+
+CMD ["gunicorn", "-w4", "-b0.0.0.0:80", "--worker-class", "sanic.worker.GunicornWorker", "sanicv2:app"]
