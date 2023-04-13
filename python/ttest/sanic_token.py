@@ -66,3 +66,26 @@ async def index(request):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000)
+
+
+# 优化这个装饰器函数
+import functools
+
+AUTH_HEADER = 'Authorization'
+TOKEN_PREFIX = 'Token'
+
+def require_token(token):
+    def decorator(f):
+        @functools.wraps(f)
+        async def decorated_function(request, *args, **kwargs):
+            auth_header = request.headers.get(AUTH_HEADER)
+            if not auth_header:
+                abort(401, description='Authorization header is missing')
+            if auth_header != f'{TOKEN_PREFIX} {token}':
+                abort(401, description='Invalid or missing token')
+            response = await f(request, *args, **kwargs)
+            return response
+        return decorated_function
+    return decorator
+
+
